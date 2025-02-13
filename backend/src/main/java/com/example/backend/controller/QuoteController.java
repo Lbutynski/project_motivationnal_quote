@@ -1,18 +1,23 @@
 package com.example.backend.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.backend.model.Quote;
 import com.example.backend.service.QuoteService;
 
 @RestController
+@RequestMapping("/api")
 public class QuoteController {
-  @GetMapping("getQuote")
-  public String getQuote() {
-    return "Hello World";
+
+  private final QuoteService quoteService;
+
+  public QuoteController(QuoteService quoteService) {
+    this.quoteService = quoteService;
   }
 
+  @GetMapping("/getQuote")
+  public String getQuote() {
+    return quoteService.getRandomQuote();
+  }
 }

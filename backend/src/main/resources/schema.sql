@@ -1,0 +1,1 @@
+create table if not exists quote(id int primary key, quote varchar(255)) ;

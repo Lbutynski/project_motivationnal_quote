@@ -1,6 +1,5 @@
 package com.example.backend.model;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +13,9 @@ public class Quote {
   private int id;
 
   private String quote;
+
+  public Quote() {
+  }
 
   public Quote(String quote) {
     super();
