@@ -11,17 +11,22 @@ import com.example.frontend.service.QuestionService;
 
 @Controller
 public class QuestionController {
-  QuestionService questionService;
+  private final QuestionService questionService;
 
-  @GetMapping("form")
-  public String getForm(Model model) {
-    return "form";
+  public QuestionController(QuestionService questionService) {
+    this.questionService = questionService;
   }
 
-  @PostMapping("submit")
+  @GetMapping("chat")
+  public String getForm(Model model) {
+    model.addAttribute("question", null);
+    return "chat";
+  }
+
+  @PostMapping("chat")
   public String submitForm(@RequestParam String question, @RequestParam String name, Model model) {
     Question questionWithAnswer = questionService.addQuestion(question, name);
-    model.addAttribute("question", question);
-    return "result";
+    model.addAttribute("question", questionWithAnswer);
+    return "chat";
   }
 }

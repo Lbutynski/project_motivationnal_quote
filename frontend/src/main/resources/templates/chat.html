@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Chat</title>
+  </head>
+  <body>
+    <form th:action="@{/chat}" method="post">
+      <label for="name">Entrez votre nom :</label>
+      <input type="text" id="name" name="name" />
+      <label for="question">Entrez votre question :</label>
+      <input type="text" id="question" name="question" />
+      <button type="submit">Envoyer</button>
+    </form>
+    <div th:if="${question != null}">
+      <h2>Votre message :</h2>
+      <p th:text="${question.user} + ' : ' + ${question.question}"></p>
+
+      <h2>Réponse inspirante :</h2>
+      <p th:text="${question.answer}"></p>
+    </div>
+  </body>
+</html>

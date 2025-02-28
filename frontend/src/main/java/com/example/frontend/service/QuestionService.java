@@ -10,7 +10,11 @@ import com.example.frontend.repository.QuestionRepository;
 
 @Service
 public class QuestionService {
-  QuestionRepository questionRepository;
+  private final QuestionRepository questionRepository;
+
+  public QuestionService(QuestionRepository questionRepository) {
+    this.questionRepository = questionRepository;
+  }
 
   public String getRandomAnswer() {
     String URL = "http://localhost:8081/api/getQuote";
