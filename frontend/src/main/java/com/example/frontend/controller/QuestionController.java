@@ -29,4 +29,25 @@ public class QuestionController {
     model.addAttribute("question", questionWithAnswer);
     return "chat";
   }
+
+  @GetMapping("/")
+  public String getHome() {
+    return "home";
+  }
+
+  @GetMapping("/admin")
+  public String getAdmin(Model model) {
+    model.addAttribute("users", questionService.getUsers());
+    model.addAttribute("selectedUser", null);
+    model.addAttribute("questions", null);
+    return "admin";
+  }
+
+  @PostMapping("/admin")
+  public String postAdmin(@RequestParam String selectedUser, Model model) {
+    model.addAttribute("users", questionService.getUsers());
+    model.addAttribute("selectedUser", selectedUser);
+    model.addAttribute("questions", questionService.getQuestionsByUser(selectedUser));
+    return "admin";
+  }
 }

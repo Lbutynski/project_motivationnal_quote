@@ -30,4 +30,11 @@ public class QuestionService {
     return questionToSave;
   }
 
+  public Question[] getQuestionsByUser(String user) {
+    return this.questionRepository.findAllByUser(user);
+  }
+
+  public String[] getUsers() {
+    return this.questionRepository.findDistinctUser();
+  }
 }

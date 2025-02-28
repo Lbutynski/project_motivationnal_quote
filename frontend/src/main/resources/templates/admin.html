@@ -1,0 +1,19 @@
+<form th:action="@{/admin}" method="post">
+  <label for="selectedUser">Sélectionnez un utilisateur :</label>
+  <select name="selectedUser" id="selectedUser">
+    <option
+      th:each="user: ${users}"
+      th:value="${user}"
+      th:text="${user}"
+    ></option>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+<div th:if="${questions != null}">
+  <h2>Questions posées :</h2>
+  <ul>
+    <li th:each="question: ${questions}">
+      <p th:text="${question.question} + ' : ' + ${question.answer}"></p>
+    </li>
+  </ul>
+</div>
